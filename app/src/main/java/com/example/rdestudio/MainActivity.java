@@ -1,6 +1,8 @@
 package com.example.rdestudio;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +23,15 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-
     }
+
+    public void mostrarActivity(View v){
+        Intent admin = new Intent(this, MainCrearCuenta.class);
+        startActivity(admin);
+    }
+    public void mostrarActivityAdmin(View v){
+        Intent admin = new Intent(this, MainAdmin.class);
+        startActivity(admin);
+    }
+
 }
