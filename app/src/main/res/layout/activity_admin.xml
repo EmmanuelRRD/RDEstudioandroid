@@ -5,56 +5,66 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- TÍTULO -->
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="64dp"
-        android:text="Equipos de trabajo"
+        android:layout_marginTop="32dp"
+        android:text="Estudios Fotográficos"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/btn_salir"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/btn_agregar"
-        android:layout_width="51dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="140dp"
-        android:background="@android:color/transparent"
-        android:contentDescription="Boton agregar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/agregar"
-        tools:srcCompat="@mipmap/agregar" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/lista_recycler"
-        android:layout_width="410dp"
-        android:layout_height="477dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="60dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_agregar" />
-
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="251dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="58dp"
-        app:layout_constraintStart_toEndOf="@+id/btn_agregar"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
+    <!-- BOTÓN SALIR -->
     <ImageButton
         android:id="@+id/btn_salir"
-        android:layout_width="49dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:background="@android:color/transparent"
+        app:srcCompat="@mipmap/salir"
         android:contentDescription="Salir sesión"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/salir" />
+        app:layout_constraintTop_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="16dp"/>
+
+    <!-- BOTÓN AGREGAR -->
+    <ImageButton
+        android:id="@+id/btn_agregar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        app:srcCompat="@mipmap/agregar"
+        android:contentDescription="Boton agregar"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"/>
+
+    <!-- BUSCADOR -->
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/btn_agregar"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="24dp"/>
+
+    <!-- LISTA RECYCLER -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lista_recycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_agregar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="12dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

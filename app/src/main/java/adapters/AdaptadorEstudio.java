@@ -3,15 +3,12 @@ package adapters;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -158,11 +155,11 @@ public class AdaptadorEstudio extends RecyclerView.Adapter<AdaptadorEstudio.View
 
                 Estudio c = lista.get(pos);
 
-                AlertDialog.Builder del = new AlertDialog.Builder(a);
+                AlertDialog.Builder del = new AlertDialog.Builder(context);
                 del.setMessage("¿Seguro que desea eliminar este registro?");
                 del.setPositiveButton("Sí", (dialog, which) -> {
 
-                    dao.eliminar(c.getIdCliente());
+                    //dao.eliminar(c.getIdCliente()); funcionalidad para eliminar usuario
 
                     lista.remove(pos);
 

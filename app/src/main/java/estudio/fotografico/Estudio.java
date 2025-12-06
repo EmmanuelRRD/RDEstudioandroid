@@ -35,4 +35,16 @@ public class Estudio {
     public void setTerminos(String terminos) { this.terminos = terminos; }
     public void setEncargado(String encargado) { this.encargado = encargado; }
     public void setId_usuario_responsable(String id_usuario_responsable) { this.id_usuario_responsable = id_usuario_responsable; }
+
+    @Override
+    public String toString() {
+        return "Estudio{" +
+                "id_estudio='" + id_estudio + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", terminos='" + terminos + '\'' +
+                ", encargado='" + encargado + '\'' +
+                ", id_usuario_responsable='" + id_usuario_responsable + '\'' +
+                '}';
+    }
 }

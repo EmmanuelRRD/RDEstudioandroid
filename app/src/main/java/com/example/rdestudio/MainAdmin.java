@@ -2,6 +2,7 @@ package com.example.rdestudio;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SearchView;
@@ -36,12 +37,18 @@ public class MainAdmin extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_admin);
 
-        RecyclerView list = findViewById(R.id.lista_recycler);
+
         ImageButton agregar = findViewById(R.id.btn_agregar);
         SearchView buscador = findViewById(R.id.searchView);
+        RecyclerView list = findViewById(R.id.lista_recycler);
         lista = new ArrayList<>();
         adapter = new AdaptadorEstudio(lista, this);
+
+        list.setLayoutManager(new LinearLayoutManager(this));
         list.setAdapter(adapter);
+
+
+        cargarDatos();
 
         //Funcionalidad para mi boton de agregar de mientras solo muestro el dialog
         agregar.setOnClickListener(v -> {
