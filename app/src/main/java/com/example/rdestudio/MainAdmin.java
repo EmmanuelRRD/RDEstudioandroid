@@ -2,11 +2,9 @@ package com.example.rdestudio;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -37,7 +34,6 @@ public class MainAdmin extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_admin);
 
-
         ImageButton agregar = findViewById(R.id.btn_agregar);
         SearchView buscador = findViewById(R.id.searchView);
         RecyclerView list = findViewById(R.id.lista_recycler);
@@ -46,7 +42,6 @@ public class MainAdmin extends AppCompatActivity {
 
         list.setLayoutManager(new LinearLayoutManager(this));
         list.setAdapter(adapter);
-
 
         cargarDatos();
 
