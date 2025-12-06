@@ -62,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Bienvenido", Toast.LENGTH_SHORT).show();
 
                         // si redirect == "admin"
-                        if(data.getRedirect().equals("admin")) {
+                        if(data.getRedirect().equals("admin")) {//aqui saca el redirect respuesta api y verifica el tipo usuario
+                            //Para agegar mas logins de varios usuarios
                             startActivity(new Intent(MainActivity.this, MainAdmin.class));
                         }
 
@@ -84,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void mostrarActivityAdmin(View v){
-        Intent admin = new Intent(this, MainAdmin.class);
+    public void mostrarActivityLogin(View v){
+        Intent admin = new Intent(this, MainCrearCuenta.class);
         startActivity(admin);
     }
 
