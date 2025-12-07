@@ -1,8 +1,11 @@
 package adapters;
 
+import static connect.api.ApiVolley.enviarActualizacion;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,17 +20,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rdestudio.R;
 
+import org.json.JSONObject;
+
 import java.util.List;
 
 import estudio.fotografico.Estudio;
-
-
 public class AdaptadorEstudio extends RecyclerView.Adapter<AdaptadorEstudio.ViewHolder> {
 
     private List<Estudio> lista;
     private Activity context;
 
-    // --- ESTE ES EL CONSTRUCTOR CORRECTO ---
     public AdaptadorEstudio(List<Estudio> lista, Activity context) {
         this.lista = lista;
         this.context = context;
@@ -37,7 +39,7 @@ public class AdaptadorEstudio extends RecyclerView.Adapter<AdaptadorEstudio.View
         TextView nombre, direccion;
         ImageView editar, eliminar;
 
-        public ViewHolder(View v) {
+        public ViewHolder(View v) {//Obtengo los datos de vew
             super(v);
             nombre = v.findViewById(R.id.text_nombre);
             direccion = v.findViewById(R.id.text_direccion);
@@ -49,7 +51,7 @@ public class AdaptadorEstudio extends RecyclerView.Adapter<AdaptadorEstudio.View
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {//Para generar lo del vew
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_estudio, parent, false);
         return new ViewHolder(v);
@@ -118,10 +120,27 @@ public class AdaptadorEstudio extends RecyclerView.Adapter<AdaptadorEstudio.View
                                         jefe.getText().toString()
                                 );
 
-                                //dao.editar(context);
+                                // Generacion de JSOn con su clase JSONObject
+                                JSONObject datos = new JSONObject();
+                                datos.put("id_estudio", e.getId_estudio());
+                                datos.put("nombre", e.getNombre());
+                                datos.put("direccion", e.getDireccion());
+                                datos.put("terminos_condiciones", e.getTerminos());
+                                datos.put("encargado", e.getEncargado());
+                                datos.put("id_usuario_responsable", e.getId_usuario_responsable());
 
-                                // Actualiza la lista y refresca solo esa fila
-                                //lista.set(pos, c);
+                                JSONObject body = new JSONObject();
+                                body.put("tabla", "estudio");
+                                body.put("id", e.getId_estudio()); //deberia de no permitir la modificación del id
+                                body.put("key", "id_estudio");   // llave primaria
+                                body.put("datos", datos);//El conjunto de datos
+
+                                enviarActualizacion(body,context);
+
+                                lista.set(pos, e);
+                                notifyItemChanged(pos);
+                                dialogo.dismiss();
+
                                 notifyItemChanged(pos);
 
                                 dialogo.dismiss();
@@ -130,7 +149,9 @@ public class AdaptadorEstudio extends RecyclerView.Adapter<AdaptadorEstudio.View
                             }
 
                         }catch (Exception e){
+                            Log.e("ADAPTADOR_ERROR", "Ocurrió un error", e);
                             Toast.makeText(context.getApplication(),"Error",Toast.LENGTH_SHORT).show();
+
                         }
                     }
                 });
