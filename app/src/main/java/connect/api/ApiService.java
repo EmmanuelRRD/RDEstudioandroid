@@ -25,25 +25,4 @@ public interface ApiService {
             @Field("password") String password
     );
 
-    private void enviarActualizacion(JSONObject body, Activity context) {
-
-        String url = "http://iscemmanuel.atwebpages.com/backend/controllers/procesar_cambios.php";
-
-        RequestQueue queue = Volley.newRequestQueue(context);
-
-        JsonObjectRequest request = new JsonObjectRequest(
-                Request.Method.POST,
-                url,
-                body,
-                response -> {
-                    Toast.makeText(context, "Actualización exitosa", Toast.LENGTH_SHORT).show();
-                },
-                error -> {
-                    Toast.makeText(context, "Error de servidor: " + error.getMessage(), Toast.LENGTH_LONG).show();
-                }
-        );
-
-        queue.add(request);
-    }
-
 }
